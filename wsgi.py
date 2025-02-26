@@ -15,7 +15,8 @@ def initialize():
   bob = RegularUser('bob', 'bob@mail.com', 'bobpass')
   rick = RegularUser('rick', 'rick@mail.com', 'rickpass')
   sally = RegularUser('sally', 'sally@mail.com', 'sallypass')
-  db.session.add_all([bob, rick, sally])  #add all can save multiple objects at once
+  pam = Admin("1111","pam","pam@email.com","pampass")
+  db.session.add_all([bob, rick, sally,pam])  #add all can save multiple objects at once
   db.session.commit()
   #load todo data from csv file
   with open('todos.csv') as file:
@@ -165,4 +166,4 @@ def list_todos():
     data.append(
         [todo.text, todo.done, todo.user.username,
          todo.get_cat_list()])
-  print(tabulate(data, headers=["Text", "Done", "User", "Categories"]))
+  print(tabulate(data, headers=["Text", "Done", "User", "Categories"]))        
